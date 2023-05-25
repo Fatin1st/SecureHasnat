@@ -5,7 +5,23 @@ import tkinter.ttk as ttk
 from tkinter import *
 from tkcalendar import DateEntry
 import tkinter.messagebox as mb
-from generate_password import generate_password
+import random
+
+
+# password-generating func
+def generate_password(range1):
+
+    characters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "¦", "@", "*", "#", "ç", "°", "%", "§", "&", "¬", "/", "|", "(", "¢", ")", "=", "?", "`", "~", "ü", "[", "]", "ö", "ä", "{", "}", ";", ":", "_", ">", "£", "'", "^", ",", ".", "-", "$", "é", "à", "¨", "è", "§", "°"]
+    random_characters = []
+    
+    for i in range(int(range1)+1):
+        i = random.choice(characters)
+        random_characters.append(i)
+
+    random.shuffle(random_characters)
+
+    password = "".join([str(item) for item in random_characters])
+    return password
 
 
 # Connecting to the Database
@@ -273,10 +289,10 @@ table.heading('Username', text='Username', anchor=CENTER)
 
 table.column('#0', width=0, stretch=NO)
 table.column('#1', width=50, stretch=NO)
-table.column('#2', width=95, stretch=NO)  # Date column
-table.column('#3', width=200, stretch=NO)  # Payee column
-table.column('#4', width=325, stretch=NO)  # Title column
-table.column('#5', width=210, stretch=NO)  # Mode of Payment column
+table.column('#2', width=95, stretch=NO)  
+table.column('#3', width=200, stretch=NO)  
+table.column('#4', width=325, stretch=NO)  
+table.column('#5', width=210, stretch=NO) 
 
 table.place(relx=0, y=0, relheight=1, relwidth=1)
 
